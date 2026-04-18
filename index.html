@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minolta X-700 Service Manual</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #f7f6f3;
+    --surface: #ffffff;
+    --border: #d8d5ce;
+    --border-strong: #b0ac9f;
+    --text: #1a1917;
+    --text-muted: #6b6760;
+    --accent: #c0392b;
+    --accent-light: #fdf0ef;
+    --mono: 'IBM Plex Mono', monospace;
+    --sans: 'IBM Plex Sans', sans-serif;
+    --sidebar: 260px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* ── Layout ── */
+  .layout { display: flex; min-height: 100vh; }
+
+  /* ── Sidebar ── */
+  .sidebar {
+    width: var(--sidebar);
+    flex-shrink: 0;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sidebar-header {
+    padding: 24px 20px 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .sidebar-logo {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+
+  .sidebar-title {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--text);
+  }
+
+  .sidebar-sub {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 3px;
+    font-family: var(--mono);
+  }
+
+  .sidebar nav { padding: 12px 0; flex: 1; }
+
+  .nav-section-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding: 10px 20px 4px;
+  }
+
+  .nav-link {
+    display: block;
+    padding: 6px 20px;
+    font-size: 13px;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: all 0.15s;
+    border-left: 2px solid transparent;
+  }
+
+  .nav-link:hover { color: var(--text); background: var(--bg); }
+  .nav-link.active { color: var(--accent); border-left-color: var(--accent); background: var(--accent-light); }
+
+  .nav-link.disabled { opacity: 0.4; pointer-events: none; font-style: italic; }
+
+  .sidebar-footer {
+    padding: 16px 20px;
+    border-top: 1px solid var(--border);
+    font-size: 11px;
+    color: var(--text-muted);
+    font-family: var(--mono);
+  }
+
+  /* ── Main ── */
+  .main {
+    flex: 1;
+    min-width: 0;
+    padding: 48px 56px;
+    max-width: 900px;
+  }
+
+  /* ── Page header ── */
+  .page-header {
+    margin-bottom: 40px;
+    padding-bottom: 24px;
+    border-bottom: 2px solid var(--text);
+  }
+
+  .page-eyebrow {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+
+  .page-title {
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 6px;
+  }
+
+  .page-subtitle {
+    font-size: 14px;
+    color: var(--text-muted);
+    font-weight: 300;
+  }
+
+  /* ── Sections ── */
+  .section { margin-bottom: 40px; }
+
+  .section-title {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* ── Spec table ── */
+  .spec-table { width: 100%; border-collapse: collapse; }
+
+  .spec-table tr { border-bottom: 1px solid var(--border); }
+  .spec-table tr:last-child { border-bottom: none; }
+
+  .spec-table td {
+    padding: 9px 12px;
+    vertical-align: top;
+    font-size: 13.5px;
+  }
+
+  .spec-table td:first-child {
+    width: 200px;
+    font-weight: 600;
+    color: var(--text-muted);
+    font-size: 12px;
+    padding-right: 20px;
+    white-space: nowrap;
+  }
+
+  .spec-table tr:hover td { background: var(--bg); }
+
+  /* ── Procedure steps ── */
+  .procedure { counter-reset: step; }
+
+  .step {
+    display: flex;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .step:last-child { border-bottom: none; }
+
+  .step-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--accent);
+    min-width: 24px;
+    padding-top: 2px;
+  }
+
+  .step-content { flex: 1; }
+  .step-title { font-weight: 600; margin-bottom: 3px; }
+  .step-body { color: var(--text-muted); font-size: 13px; }
+
+  /* ── Warning / note callouts ── */
+  .callout {
+    padding: 12px 16px;
+    margin: 16px 0;
+    border-left: 3px solid;
+    font-size: 13px;
+  }
+
+  .callout.warning { border-color: var(--accent); background: var(--accent-light); }
+  .callout.note { border-color: var(--border-strong); background: var(--bg); }
+
+  .callout-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .callout.warning .callout-label { color: var(--accent); }
+  .callout.note .callout-label { color: var(--text-muted); }
+
+  /* ── Parts table ── */
+  .parts-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .parts-table th {
+    text-align: left;
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding: 8px 12px;
+    border-bottom: 2px solid var(--border-strong);
+  }
+  .parts-table td { padding: 8px 12px; border-bottom: 1px solid var(--border); }
+  .parts-table tr:hover td { background: var(--bg); }
+  .parts-table td:first-child { font-family: var(--mono); font-size: 12px; color: var(--text-muted); }
+
+  /* ── Schematic placeholder ── */
+  .schematic-placeholder {
+    border: 2px dashed var(--border);
+    border-radius: 4px;
+    padding: 40px;
+    text-align: center;
+    color: var(--text-muted);
+    font-family: var(--mono);
+    font-size: 12px;
+    margin: 16px 0;
+  }
+
+  /* ── Breadcrumb ── */
+  .breadcrumb {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+  }
+
+  .breadcrumb span { margin: 0 6px; }
+
+  /* ── Status badge ── */
+  .badge {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 2px;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+
+  .badge.complete { background: #e8f5e9; color: #2e7d32; }
+  .badge.wip { background: #fff8e1; color: #f57f17; }
+
+  /* ── Search ── */
+  .search-wrap { padding: 12px 16px; border-bottom: 1px solid var(--border); }
+  .search-input {
+    width: 100%;
+    padding: 7px 10px;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    font-family: var(--mono);
+    font-size: 12px;
+    background: var(--bg);
+    color: var(--text);
+    outline: none;
+  }
+  .search-input:focus { border-color: var(--border-strong); }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    .sidebar { display: none; }
+    .main { padding: 24px 20px; }
+  }
+
+  /* ── Print ── */
+  @media print {
+    .sidebar { display: none; }
+    .main { padding: 0; max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo">Service Manual</div>
+      <div class="sidebar-title">Minolta X-700</div>
+      <div class="sidebar-sub">2017-100 / 2017-200</div>
+    </div>
+
+    <div class="search-wrap">
+      <input class="search-input" type="text" placeholder="Search manual..." id="search" oninput="handleSearch(this.value)">
+    </div>
+
+    <nav>
+      <div class="nav-section-label">Overview</div>
+      <a class="nav-link active" href="#spec-type">Specifications</a>
+      <a class="nav-link" href="#spec-shutter">— Shutter</a>
+      <a class="nav-link" href="#spec-synchro">— Synchro / Flash</a>
+      <a class="nav-link" href="#spec-film">— Film Transport</a>
+      <a class="nav-link" href="#spec-viewfinder">— Viewfinder</a>
+      <a class="nav-link" href="#spec-exposure">— Exposure Control</a>
+      <a class="nav-link" href="#spec-power">— Power Supply</a>
+      <a class="nav-link" href="#spec-backcover">— Back Cover</a>
+      <a class="nav-link" href="#spec-size">— Size &amp; Weight</a>
+      <a class="nav-link" href="#spec-accessories">— Accessories</a>
+
+      <div class="nav-section-label">Disassembly</div>
+      <a class="nav-link disabled" href="#disassembly-top">Top Cover</a>
+      <a class="nav-link disabled" href="#disassembly-bottom">Bottom Cover</a>
+      <a class="nav-link disabled" href="#disassembly-lens">Lens Mount</a>
+      <a class="nav-link disabled" href="#disassembly-shutter">Shutter Unit</a>
+      <a class="nav-link disabled" href="#disassembly-mirror">Mirror Box</a>
+
+      <div class="nav-section-label">Adjustment</div>
+      <a class="nav-link disabled" href="#adj-shutter">Shutter Timing</a>
+      <a class="nav-link disabled" href="#adj-meter">Metering Calibration</a>
+      <a class="nav-link disabled" href="#adj-viewfinder">Viewfinder</a>
+
+      <div class="nav-section-label">Schematics</div>
+      <a class="nav-link disabled" href="#schematic-main">Main PCB</a>
+      <a class="nav-link disabled" href="#schematic-shutter">Shutter Control</a>
+      <a class="nav-link disabled" href="#schematic-meter">Metering Circuit</a>
+
+      <div class="nav-section-label">Parts</div>
+      <a class="nav-link" href="#parts-intro">How to Use</a>
+      <a class="nav-link" href="#parts-index">Index</a>
+      <a class="nav-link disabled" href="#parts-mechanical">Exploded Views</a>
+      <a class="nav-link disabled" href="#parts-electrical">Electrical</a>
+      <a class="nav-link disabled" href="#parts-optical">Optical</a>
+    </nav>
+
+    <div class="sidebar-footer">
+      Community digitization project<br>
+      Contributions welcome
+    </div>
+  </aside>
+
+  <!-- Main content -->
+  <main class="main" id="main-content">
+
+    <div class="breadcrumb">
+      Minolta X-700 <span>›</span> Specifications
+    </div>
+
+    <div class="page-header">
+      <div class="page-eyebrow">Section 1</div>
+      <h1 class="page-title">Specifications <span class="badge complete">Complete</span></h1>
+      <p class="page-subtitle">Model 2017-100 (Chrome) &amp; 2017-200 (Black) — Full factory specifications</p>
+    </div>
+
+    <!-- Type of Camera -->
+    <div class="section" id="spec-type">
+      <div class="section-title">Type of Camera</div>
+      <table class="spec-table">
+        <tr><td>Type</td><td>Electronically controlled 35mm focal plane shutter, single-lens reflex AE camera</td></tr>
+        <tr><td>Photography system</td><td>Program AE, aperture priority AE, and manual photography</td></tr>
+        <tr><td>Standard lens</td><td>MD 50mm F1.2 &nbsp;/&nbsp; MD 50mm F1.4 &nbsp;/&nbsp; MD 50mm F1.7</td></tr>
+        <tr><td>Lens mount</td><td>Minolta SLR bayonet mount</td></tr>
+        <tr><td>Film</td><td>JIS 135 rolled film</td></tr>
+        <tr><td>Image field</td><td>24mm × 36mm</td></tr>
+      </table>
+    </div>
+
+    <!-- Shutter -->
+    <div class="section" id="spec-shutter">
+      <div class="section-title">Shutter</div>
+      <table class="spec-table">
+        <tr><td>Type</td><td>Electronically controlled focal plane shutter, traveling horizontally</td></tr>
+        <tr>
+          <td>Shutter speeds</td>
+          <td>
+            <strong>Auto (P and A modes):</strong> 4 sec. to 1/1000 sec. (stepless)<br>
+            <strong>Manual:</strong> 1, 1/2, 1/4, 1/8, 1/15, 1/30, 1/60, 1/125, 1/250, 1/500, 1/1000 sec. and B (bulb)
+          </td>
+        </tr>
+        <tr><td>Shutter dial</td><td>Click stop endless dial with P/A lock position</td></tr>
+        <tr>
+          <td>Shutter release</td>
+          <td>
+            Electromagnetic release. Remote cord and wireless controller IR-1 compatible.<br>
+            Locks in case of battery voltage drop.<br>
+            Sensor switch keeps metering active for 15 sec. after touch.<br>
+            Intermittent alarm when indicated shutter speed falls below 1/30 sec. (main switch ON).
+          </td>
+        </tr>
+        <tr>
+          <td>Self-timer</td>
+          <td>Electronic, 10 sec. delay. LED blink + intermittent alarm indication. Pre-operation notice given. Can be cancelled after start.</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- Synchro -->
+    <div class="section" id="spec-synchro">
+      <div class="section-title">Synchro / Flash</div>
+      <table class="spec-table">
+        <tr><td>Flash sync</td><td>X contact — electroflash sync at 1/60 sec. and slower. Flash bulb at 1/15 sec. and slower.</td></tr>
+        <tr><td>Hot shoe</td><td>Direct contact with electric shock prevention device, synchro auto control contact</td></tr>
+        <tr><td>Synchro terminal</td><td>JIS B type socket</td></tr>
+      </table>
+    </div>
+
+    <!-- Film Transport -->
+    <div class="section" id="spec-film">
+      <div class="section-title">Film Winding &amp; Rewinding</div>
+      <table class="spec-table">
+        <tr><td>Film winding</td><td>Single-operation lever, 130° winding angle, 30° preliminary angle. Compatible with Motor Drive 1 and Auto Winder G.</td></tr>
+        <tr><td>Film counter</td><td>Auto resetting, additive calculation</td></tr>
+        <tr><td>Film rewinding</td><td>Auto rewind and crank system. Auto reset of rewind button.</td></tr>
+      </table>
+    </div>
+
+    <!-- Viewfinder -->
+    <div class="section" id="spec-viewfinder">
+      <div class="section-title">Viewfinder</div>
+      <table class="spec-table">
+        <tr><td>Focusing screen</td><td>Center: split image + microprism ring. Periphery: Acutematte</td></tr>
+        <tr><td>Coverage</td><td>95% of standard 21mm × 36mm image field</td></tr>
+        <tr><td>Magnification</td><td>0.9× (50mm standard lens at ∞)</td></tr>
+        <tr><td>Eyepoint</td><td>1 diopter</td></tr>
+        <tr>
+          <td>Indications</td>
+          <td>Shooting mode LED, shutter speed scale, shutter speed indication LED, shutter speed non-interlock alarm LED, exposure compensation indication, exposure compensating LED, set aperture/flash ready signal, FDC indication, faulty P mode indication</td>
+        </tr>
+        <tr><td>Mirror</td><td>Slide-up quick return</td></tr>
+      </table>
+    </div>
+
+    <!-- Exposure Control -->
+    <div class="section" id="spec-exposure">
+      <div class="section-title">Exposure Control</div>
+      <table class="spec-table">
+        <tr><td>Metering system</td><td>TTL center-weighted average metering. Minolta direct metering using auto electroflash 280PX/CLE.</td></tr>
+        <tr><td>Sensor element</td><td>Silicon photocell (SPC)</td></tr>
+        <tr><td>AE interlock range</td><td>EV 1–18 (ASA 100, F1.4 lens)</td></tr>
+        <tr><td>Film speed</td><td>ASA/ISO 25–1600 (locked every 1/3 stage)</td></tr>
+        <tr><td>Exposure compensation</td><td>±2EV in 1/2 stage increments</td></tr>
+      </table>
+    </div>
+
+    <!-- Power Supply -->
+    <div class="section" id="spec-power">
+      <div class="section-title">Power Supply</div>
+      <table class="spec-table">
+        <tr><td>Battery</td><td>Two 1.5V alkaline manganese batteries (JIS LR44/A76) or 1.55V silver oxide battery G-13 type (JIS SR44) or equivalent</td></tr>
+        <tr><td>Main switch</td><td>Changeover type: ON)))), ON, OFF</td></tr>
+        <tr><td>Metering switch</td><td>Shutter button sensor switch system (also serves as battery check)</td></tr>
+      </table>
+    </div>
+
+    <!-- Back Cover -->
+    <div class="section" id="spec-backcover">
+      <div class="section-title">Back Cover</div>
+      <table class="spec-table">
+        <tr><td>Design</td><td>Control lift and one-touch lock system. Memo holder with grip (film speed conversion). Multi-function back compatibility.</td></tr>
+      </table>
+    </div>
+
+    <!-- Others -->
+    <div class="section" id="spec-other">
+      <div class="section-title">Other Features</div>
+      <table class="spec-table">
+        <tr><td>Included</td><td>Film signal, preview button, battery case, eyepiece cap</td></tr>
+      </table>
+    </div>
+
+    <!-- Size & Weight -->
+    <div class="section" id="spec-size">
+      <div class="section-title">Size &amp; Weight</div>
+      <table class="spec-table">
+        <tr><td>Dimensions</td><td>137mm (W) × 89mm (H) × 51.5mm (D)</td></tr>
+        <tr><td>Weight</td><td>505g (body only, less battery)</td></tr>
+      </table>
+    </div>
+
+    <!-- Accessories -->
+    <div class="section" id="spec-accessories">
+      <div class="section-title">Exclusive Accessories</div>
+      <table class="spec-table">
+        <tr><td>Multi-function back</td><td>Code No. 8744</td></tr>
+        <tr><td>Auto electroflash 280PX</td><td>Code No. 8808</td></tr>
+      </table>
+    </div>
+
+    <!-- Placeholder sections -->
+    <div class="section" id="disassembly-top" style="margin-top:60px;">
+      <div class="section-title">Disassembly — Top Cover <span class="badge wip">Not yet digitized</span></div>
+      <div class="callout note">
+        <div class="callout-label">Note</div>
+        This section has not been digitized yet. If you have a scan of this page, please contribute it to the project.
+      </div>
+      <div class="schematic-placeholder">[ Procedure steps will appear here ]</div>
+    </div>
+
+    <div class="section" id="schematic-main" style="margin-top:60px;">
+      <div class="section-title">Schematic — Main PCB <span class="badge wip">Not yet digitized</span></div>
+      <div class="callout note">
+        <div class="callout-label">Note</div>
+        Schematics will be added as scans are processed. High-resolution images will be embedded directly.
+      </div>
+      <div class="schematic-placeholder">[ Schematic image will appear here ]</div>
+    </div>
+
+    <div class="section" id="parts-intro" style="margin-top:60px;">
+      <div class="section-title">Parts List — How to Use This Section</div>
+
+      <div class="callout note">
+        <div class="callout-label">Note</div>
+        This Parts List is based on existing models as of January 1983 (2017-200 Black model).
+      </div>
+
+      <p style="margin-bottom:16px; font-size:13.5px;">Parts modified during production are marked on exploded view diagrams with the following symbols:</p>
+
+      <table class="spec-table" style="margin-bottom:20px;">
+        <tr>
+          <td style="width:48px; font-size:18px; text-align:center;">●</td>
+          <td>Modified during production. <strong>Not individually interchangeable with previous type.</strong> (Some parts may be interchangeable — refer to specified page listed under part number.)</td>
+        </tr>
+        <tr>
+          <td style="font-size:18px; text-align:center;">◎</td>
+          <td>Discontinued during production — newly added or temporarily used part. (Refer to specified page listed under part number.)</td>
+        </tr>
+      </table>
+
+      <div class="callout warning">
+        <div class="callout-label">Important</div>
+        For modification details, see P. 21 or later. Read and understand P. 21 before proceeding with parts identification.
+      </div>
+
+      <p style="margin-top:16px; margin-bottom:12px; font-size:13.5px;"><strong>Model coverage notes:</strong></p>
+      <table class="spec-table">
+        <tr>
+          <td>AE lock variants</td>
+          <td>This Parts List is based on the X-700 <em>with</em> AE lock. Two variants exist on the market: AE lock and non-AE lock. For X-700 <strong>without</strong> AE lock, refer to P. 35–40 for exclusive parts.</td>
+        </tr>
+        <tr>
+          <td>2017-100 Chrome model</td>
+          <td>Chrome-exclusive parts described on P. 20. All other parts are common with 2017-200 — refer to P. 1–17. For flexible P.C. board wiring of 2017-100, refer to P. 39–40 (AE lock not provided on Chrome model).</td>
+        </tr>
+        <tr>
+          <td>2017-200 Black model</td>
+          <td>Main parts reference throughout P. 1–17.</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="section" id="parts-index">
+      <div class="section-title">Parts Index</div>
+
+      <table class="spec-table" style="margin-bottom:16px;">
+        <tr><td>※</td><td>Exclusive part for Chrome model (2017-100)</td></tr>
+        <tr><td>★</td><td>Exclusive part for both models — AE lock and non-AE lock variants</td></tr>
+        <tr><td>☆</td><td>Exclusive part for non-AE lock model only</td></tr>
+      </table>
+
+      <div style="margin-bottom:12px;">
+        <input class="search-input" type="text" id="parts-search" placeholder="Filter by part number or page…" oninput="filterParts(this.value)" style="max-width:320px;">
+      </div>
+
+      <table class="parts-table" id="parts-table">
+        <thead>
+          <tr>
+            <th style="cursor:pointer" onclick="sortParts('part')">Part No. ↕</th>
+            <th style="cursor:pointer" onclick="sortParts('page')">Page ↕</th>
+            <th style="cursor:pointer" onclick="sortParts('type')">Type ↕</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody id="parts-tbody">
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section" id="parts-mechanical">
+      <div class="section-title">Parts List — Exploded Views <span class="badge wip">Not yet digitized</span></div>
+      <div class="callout note">
+        <div class="callout-label">Note</div>
+        Exploded view diagrams and detailed parts tables will be added as pages are scanned.
+      </div>
+      <div class="schematic-placeholder">[ Exploded view diagrams will appear here ]</div>
+    </div>
+
+  </main>
+</div>
+
+<script>
+  // Parts index data
+  const partsData = [
+    { part: "2017-0103", page: "8,37",  flag: "★" },
+    { part: "2017-0110", page: "3",     flag: "" },
+    { part: "2017-0113", page: "4,14",  flag: "" },
+    { part: "2017-0119", page: "20",    flag: "※" },
+    { part: "2017-0120", page: "1",     flag: "" },
+    { part: "2017-0130", page: "4,36",  flag: "★" },
+    { part: "2017-0131", page: "20",    flag: "※" },
+    { part: "2017-0132", page: "2",     flag: "" },
+    { part: "2017-0139", page: "20",    flag: "※" },
+    { part: "2006-0140", page: "3",     flag: "" },
+    { part: "2017-0140", page: "1",     flag: "" },
+    { part: "2017-0151", page: "2",     flag: "" },
+    { part: "2017-0153", page: "8",     flag: "" },
+    { part: "2017-0163", page: "6",     flag: "" },
+    { part: "2024-0166", page: "4",     flag: "" },
+    { part: "2017-0175", page: "6",     flag: "" },
+    { part: "2017-0201", page: "16",    flag: "" },
+    { part: "2017-0207", page: "16",    flag: "" },
+    { part: "2017-0209", page: "17",    flag: "" },
+    { part: "2017-0211", page: "16",    flag: "" },
+    { part: "2006-0215", page: "17",    flag: "" },
+    { part: "2017-0216", page: "16",    flag: "" },
+    { part: "2017-0218", page: "16",    flag: "" },
+    { part: "2017-0219", page: "16",    flag: "" },
+    { part: "2017-0226", page: "17",    flag: "" },
+    { part: "2017-0227", page: "17",    flag: "" },
+    { part: "2017-0229", page: "17",    flag: "" },
+    { part: "2017-0242", page: "17",    flag: "" },
+    { part: "2017-0248", page: "1",     flag: "" },
+    { part: "2017-0249", page: "4",     flag: "" },
+    { part: "2019-0251", page: "20",    flag: "※" },
+    { part: "2017-0252", page: "9",     flag: "" },
+    { part: "2017-0253", page: "16",    flag: "" },
+    { part: "2017-0255", page: "5",     flag: "" },
+    { part: "2017-0256", page: "9",     flag: "" },
+    { part: "2017-0258", page: "16",    flag: "" },
+    { part: "2017-0259", page: "1",     flag: "" },
+    { part: "2019-0260", page: "1",     flag: "" },
+    { part: "2017-0267", page: "16",    flag: "" },
+    { part: "2017-0274", page: "15",    flag: "" },
+    { part: "2017-0276", page: "15",    flag: "" },
+    { part: "2017-0281", page: "1",     flag: "" },
+    { part: "2017-0301", page: "20",    flag: "※" },
+    { part: "2017-0302", page: "1",     flag: "" },
+    { part: "2017-0307", page: "12",    flag: "" },
+    { part: "2017-0308", page: "12",    flag: "" },
+    { part: "2017-0310", page: "12",    flag: "" },
+    { part: "2017-0312", page: "12",    flag: "" },
+    { part: "2017-0322", page: "12",    flag: "" },
+    { part: "2017-0328", page: "12",    flag: "" },
+    { part: "2017-0331", page: "13",    flag: "" },
+    { part: "2017-0338", page: "12",    flag: "" },
+    { part: "2017-0341", page: "11",    flag: "" },
+    { part: "2017-0345", page: "11",    flag: "" },
+    { part: "2017-0350", page: "13",    flag: "" },
+    { part: "2017-0352", page: "13",    flag: "" },
+    { part: "2019-0396", page: "1",     flag: "" },
+    { part: "2017-0401", page: "15,39", flag: "★" },
+    { part: "2017-0404", page: "15",    flag: "" },
+    { part: "2017-0407", page: "4",     flag: "" },
+    { part: "2017-0412", page: "15",    flag: "" },
+    { part: "2017-0415", page: "1",     flag: "" },
+    { part: "2017-0416", page: "20",    flag: "※" },
+    { part: "2017-0417", page: "1",     flag: "" },
+    { part: "2017-0418", page: "8,37",  flag: "★" },
+    // Index page 2
+    { part: "2006-1108", page: "3",     flag: "" },
+    { part: "2017-1110", page: "14",    flag: "" },
+    { part: "2017-1111", page: "14",    flag: "" },
+    { part: "2006-1112", page: "14",    flag: "" },
+    { part: "2006-1116", page: "3",     flag: "" },
+    { part: "2017-1117", page: "3",     flag: "" },
+    { part: "2006-1119", page: "3",     flag: "" },
+    { part: "2017-1202", page: "3",     flag: "" },
+    { part: "2017-1203", page: "3",     flag: "" },
+    { part: "2017-1204", page: "3",     flag: "" },
+    { part: "2017-1205", page: "3",     flag: "" },
+    { part: "2017-1321", page: "20",    flag: "※" },
+    { part: "2006-1322", page: "1",     flag: "" },
+    { part: "2017-1322", page: "1",     flag: "" },
+    { part: "2017-1323", page: "20",    flag: "※" },
+    { part: "2017-1324", page: "1",     flag: "" },
+    { part: "2017-1325", page: "20",    flag: "※" },
+    { part: "2017-1326", page: "1",     flag: "" },
+    { part: "2017-1327", page: "20",    flag: "※" },
+    { part: "2017-1328", page: "1",     flag: "" },
+    { part: "2017-1344", page: "1",     flag: "" },
+    { part: "2017-1346", page: "1",     flag: "" },
+    { part: "2017-1349", page: "20",    flag: "※" },
+    { part: "2017-1350", page: "14",    flag: "" },
+    { part: "2017-1351", page: "20",    flag: "※" },
+    { part: "2017-1352", page: "2",     flag: "" },
+    { part: "2017-1354", page: "1",     flag: "" },
+    { part: "2017-1365", page: "4,38",  flag: "★" },
+    { part: "2006-2008", page: "15",    flag: "" },
+    { part: "2017-2015", page: "4",     flag: "" },
+    { part: "2017-2016", page: "15",    flag: "" },
+    { part: "2006-2017", page: "15",    flag: "" },
+    { part: "2017-2018", page: "1",     flag: "" },
+    { part: "2019-2020", page: "1",     flag: "" },
+    { part: "2006-2022", page: "1",     flag: "" },
+    { part: "2019-2023", page: "1",     flag: "" },
+    { part: "2019-2053", page: "1",     flag: "" },
+    { part: "2017-2054", page: "1",     flag: "" },
+    { part: "2019-2055", page: "1",     flag: "" },
+    { part: "2019-2056", page: "1",     flag: "" },
+    { part: "2017-2060", page: "1",     flag: "" },
+    { part: "2017-2062", page: "1",     flag: "" },
+    { part: "2019-2067", page: "1",     flag: "" },
+    { part: "2019-2068", page: "1",     flag: "" },
+    { part: "2019-2069", page: "1",     flag: "" },
+    { part: "2019-2070", page: "2",     flag: "" },
+    { part: "2017-2104", page: "17",    flag: "" },
+    { part: "2017-2105", page: "17",    flag: "" },
+    { part: "2017-2108", page: "16",    flag: "" },
+    { part: "2006-2114", page: "17",    flag: "" },
+    { part: "2017-2123", page: "17",    flag: "" },
+    { part: "2017-2126", page: "17",    flag: "" },
+    { part: "2006-2130", page: "17",    flag: "" },
+    { part: "2017-2131", page: "17",    flag: "" },
+    { part: "2017-2132", page: "17",    flag: "" },
+    { part: "2006-2143", page: "17",    flag: "" },
+    { part: "2006-2144", page: "17",    flag: "" },
+    { part: "2017-2147", page: "17",    flag: "" },
+    { part: "2017-2148", page: "17",    flag: "" },
+    { part: "2017-2157", page: "16",    flag: "" },
+    { part: "2017-2166", page: "16",    flag: "" },
+    { part: "2017-2168", page: "16",    flag: "" },
+    { part: "2017-2183", page: "16",    flag: "" },
+    { part: "2006-2184", page: "16",    flag: "" },
+    { part: "2017-2184", page: "16",    flag: "" },
+    // Index page 3
+    { part: "2017-0419", page: "8",     flag: "" },
+    { part: "2017-0420", page: "24",    flag: "" },
+    { part: "2024-0420", page: "5",     flag: "" },
+    { part: "2017-0422", page: "6",     flag: "" },
+    { part: "2017-0423", page: "4",     flag: "" },
+    { part: "2017-0425", page: "4",     flag: "" },
+    { part: "2017-0430", page: "2",     flag: "" },
+    { part: "2017-0432", page: "6",     flag: "" },
+    { part: "2017-0436", page: "4",     flag: "" },
+    { part: "2017-0451", page: "4",     flag: "" },
+    { part: "2017-0505", page: "10",    flag: "" },
+    { part: "2017-0508", page: "10",    flag: "" },
+    { part: "2017-0510", page: "7",     flag: "" },
+    { part: "2017-0512", page: "9",     flag: "" },
+    { part: "2017-0517", page: "10",    flag: "" },
+    { part: "2017-0519", page: "10",    flag: "" },
+    { part: "2017-0521", page: "10",    flag: "" },
+    { part: "2017-0523", page: "9",     flag: "" },
+    { part: "2017-0534", page: "8",     flag: "" },
+    { part: "2017-0542", page: "7",     flag: "" },
+    { part: "2017-0550", page: "7",     flag: "" },
+    { part: "2017-0570", page: "9",     flag: "" },
+    { part: "2017-0571", page: "9",     flag: "" },
+    { part: "2017-0576", page: "6",     flag: "" },
+    { part: "2017-0584", page: "9",     flag: "" },
+    { part: "2017-0818", page: "7",     flag: "" },
+    { part: "2006-0881", page: "4",     flag: "" },
+    { part: "2017-1005", page: "6,38",  flag: "★" },
+    { part: "2017-1006", page: "8",     flag: "" },
+    { part: "2017-1007", page: "1",     flag: "" },
+    { part: "2017-1008", page: "8",     flag: "" },
+    { part: "2017-1009", page: "1",     flag: "" },
+    { part: "2017-1010", page: "6",     flag: "" },
+    { part: "2006-1011", page: "6",     flag: "" },
+    { part: "2006-1014", page: "8",     flag: "" },
+    { part: "2017-1015", page: "4,36",  flag: "★" },
+    { part: "2017-1016", page: "4,38",  flag: "★" },
+    { part: "2017-1017", page: "2",     flag: "" },
+    { part: "2006-1018", page: "2",     flag: "" },
+    { part: "2017-1021", page: "4,36",  flag: "★" },
+    { part: "2017-1023", page: "4",     flag: "" },
+    { part: "2017-1024", page: "4,36",  flag: "★" },
+    { part: "2017-1025", page: "4",     flag: "" },
+    { part: "0031-1027", page: "4",     flag: "" },
+    { part: "2017-1030", page: "4",     flag: "" },
+    { part: "2017-1031", page: "4",     flag: "" },
+    { part: "0031-1034", page: "4",     flag: "" },
+    { part: "2017-1040", page: "14",    flag: "" },
+    { part: "2017-1041", page: "14",    flag: "" },
+    { part: "2006-1042", page: "14",    flag: "" },
+    { part: "2017-1043", page: "14",    flag: "" },
+    { part: "2017-1052", page: "2",     flag: "" },
+    { part: "2017-1054", page: "2",     flag: "" },
+    { part: "2017-1057", page: "2",     flag: "" },
+    { part: "2005-1061", page: "6",     flag: "" },
+    { part: "2006-1061", page: "2",     flag: "" },
+    { part: "2005-1062", page: "6",     flag: "" },
+    { part: "2017-1062", page: "2",     flag: "" },
+    { part: "2005-1063", page: "6",     flag: "" },
+    { part: "2017-1064", page: "6",     flag: "" },
+    { part: "2019-1066", page: "24",    flag: "" },
+    { part: "2017-1068", page: "2",     flag: "" },
+    { part: "2017-1069", page: "2",     flag: "" },
+    { part: "2017-1070", page: "2",     flag: "" },
+    { part: "2006-1106", page: "3",     flag: "" },
+    // Index page 4
+    { part: "2017-2185", page: "17",    flag: "" },
+    { part: "2017-2189", page: "16",    flag: "" },
+    { part: "2017-2191", page: "16",    flag: "" },
+    { part: "2017-2192", page: "16",    flag: "" },
+    { part: "2017-2204", page: "16",    flag: "" },
+    { part: "2017-2205", page: "8,16",  flag: "" },
+    { part: "2017-2212", page: "16",    flag: "" },
+    { part: "2019-2291", page: "8",     flag: "" },
+    { part: "2017-2517", page: "9",     flag: "" },
+    { part: "2017-2519", page: "9",     flag: "" },
+    { part: "2017-2520", page: "9",     flag: "" },
+    { part: "2017-2577", page: "9",     flag: "" },
+    { part: "2017-2585", page: "6",     flag: "" },
+    { part: "2006-2718", page: "16",    flag: "" },
+    { part: "2006-2749", page: "16",    flag: "" },
+    { part: "2006-2758", page: "16",    flag: "" },
+    { part: "2006-2762", page: "16",    flag: "" },
+    { part: "2006-2773", page: "16",    flag: "" },
+    { part: "7991-3001", page: "1",     flag: "" },
+    { part: "2019-3002", page: "21",    flag: "" },
+    { part: "2006-3003", page: "20",    flag: "※" },
+    { part: "2017-3005", page: "1",     flag: "" },
+    { part: "2006-3009", page: "12",    flag: "" },
+    { part: "2017-3010", page: "5",     flag: "" },
+    { part: "2017-3013", page: "1",     flag: "" },
+    { part: "2017-3020", page: "12",    flag: "" },
+    { part: "2017-3021", page: "12",    flag: "" },
+    { part: "2017-3024", page: "5",     flag: "" },
+    { part: "2017-3025", page: "12",    flag: "" },
+    { part: "2017-3026", page: "12",    flag: "" },
+    { part: "2017-3027", page: "12",    flag: "" },
+    { part: "2017-3032", page: "12",    flag: "" },
+    { part: "2017-3037", page: "13",    flag: "" },
+    { part: "2006-3040", page: "12",    flag: "" },
+    { part: "2017-3041", page: "13,38", flag: "★" },
+    { part: "2017-3042", page: "13,38", flag: "★" },
+    { part: "2017-3048", page: "12",    flag: "" },
+    { part: "2017-3051", page: "13",    flag: "" },
+    { part: "2006-3053", page: "13",    flag: "" },
+    { part: "2006-3055", page: "13",    flag: "" },
+    { part: "2017-3056", page: "12",    flag: "" },
+    { part: "2017-3057", page: "12",    flag: "" },
+    { part: "2017-3058", page: "12",    flag: "" },
+    { part: "2017-3065", page: "12",    flag: "" },
+    { part: "2017-3066", page: "12",    flag: "" },
+    { part: "2019-3301", page: "20",    flag: "※" },
+    { part: "2019-3303", page: "1",     flag: "" },
+    { part: "2017-3304", page: "14",    flag: "" },
+    { part: "2019-3306", page: "1",     flag: "" },
+    { part: "2019-3308", page: "14",    flag: "" },
+    { part: "2017-3309", page: "14",    flag: "" },
+    { part: "2019-3311", page: "1",     flag: "" },
+    { part: "2017-3312", page: "14",    flag: "" },
+    { part: "2017-3403", page: "11",    flag: "" },
+    { part: "2017-3404", page: "11",    flag: "" },
+    { part: "2017-3405", page: "11",    flag: "" },
+    { part: "2017-3407", page: "11",    flag: "" },
+    { part: "2017-3410", page: "11",    flag: "" },
+    { part: "2017-3414", page: "11",    flag: "" },
+    { part: "2017-3416", page: "11",    flag: "" },
+    { part: "2017-3421", page: "13",    flag: "" },
+    { part: "2017-3422", page: "11",    flag: "" },
+    { part: "2017-3424", page: "11",    flag: "" },
+    // Index page 5
+    { part: "2017-4037", page: "26",    flag: "" },
+    { part: "2017-4191", page: "4",     flag: "" },
+    { part: "2017-4209", page: "15",    flag: "" },
+    { part: "2017-4216", page: "5",     flag: "" },
+    { part: "2017-4222", page: "5",     flag: "" },
+    { part: "2017-4255", page: "14",    flag: "" },
+    { part: "2017-4256", page: "2",     flag: "" },
+    { part: "2017-4301", page: "18,39", flag: "" },
+    { part: "2017-4302", page: "18,39", flag: "" },
+    { part: "2017-4303", page: "18,39", flag: "★" },
+    { part: "2017-4304", page: "18,39", flag: "" },
+    { part: "2017-4305", page: "18,39", flag: "" },
+    { part: "2017-4344", page: "6",     flag: "" },
+    { part: "2017-4401", page: "19",    flag: "" },
+    { part: "2017-4402", page: "19",    flag: "" },
+    { part: "2017-5006", page: "4",     flag: "" },
+    { part: "2017-5008", page: "4",     flag: "" },
+    { part: "2017-5011", page: "7",     flag: "" },
+    { part: "2017-5013", page: "7",     flag: "" },
+    { part: "2017-5014", page: "7",     flag: "" },
+    { part: "2017-5015", page: "7",     flag: "" },
+    { part: "2017-5016", page: "7",     flag: "" },
+    { part: "2017-5017", page: "7",     flag: "" },
+    { part: "2017-5018", page: "7",     flag: "" },
+    { part: "2017-5019", page: "10",    flag: "" },
+    { part: "2017-5023", page: "10",    flag: "" },
+    { part: "2017-5025", page: "10",    flag: "" },
+    { part: "2017-5026", page: "10",    flag: "" },
+    { part: "2017-5027", page: "10",    flag: "" },
+    { part: "2017-5028", page: "10",    flag: "" },
+    { part: "2017-5029", page: "10",    flag: "" },
+    { part: "2017-5030", page: "10",    flag: "" },
+    { part: "2017-5031", page: "7",     flag: "" },
+    { part: "2017-5032", page: "7",     flag: "" },
+    { part: "2017-5034", page: "7",     flag: "" },
+    { part: "2009-5038", page: "8",     flag: "" },
+    { part: "2006-5039", page: "7",     flag: "" },
+    { part: "2009-5080", page: "6",     flag: "" },
+    { part: "2017-5106", page: "9",     flag: "" },
+    { part: "2017-5113", page: "10",    flag: "" },
+    { part: "2017-5121", page: "9",     flag: "" },
+    { part: "2017-5164", page: "10",    flag: "" },
+    { part: "2017-5805", page: "7",     flag: "" },
+    { part: "2019-5806", page: "10",    flag: "" },
+    { part: "2017-5814", page: "6",     flag: "" },
+    { part: "2009-5870", page: "6",     flag: "" },
+    { part: "2017-9001", page: "10",    flag: "" },
+    { part: "2005-9005", page: "9",     flag: "" },
+    { part: "2017-9011", page: "12",    flag: "" },
+    { part: "2017-9012", page: "12",    flag: "" },
+    { part: "2017-9014", page: "37",    flag: "☆" },
+    { part: "2017-9018", page: "15",    flag: "" },
+    { part: "2006-9103", page: "8",     flag: "" },
+    { part: "2017-9106", page: "7",     flag: "" },
+    { part: "2017-9107", page: "8",     flag: "" },
+    { part: "2017-9108", page: "12",    flag: "" },
+    { part: "2006-9109", page: "3",     flag: "" },
+    { part: "2006-9110", page: "20",    flag: "※" },
+    { part: "2006-9112", page: "2",     flag: "" },
+    { part: "2017-9113", page: "5",     flag: "" },
+    { part: "2017-9114", page: "4",     flag: "",  type: "" },
+    // Index page 6 — hardware (screws, e-rings, steel ball)
+    { part: "2017-9120", page: "6",     flag: "",  type: "" },
+    { part: "2006-9121", page: "14",    flag: "",  type: "" },
+    { part: "2017-9245", page: "2",     flag: "",  type: "" },
+    { part: "2006-9401", page: "14",    flag: "",  type: "" },
+    { part: "2017-9430", page: "11",    flag: "",  type: "" },
+    { part: "2017-9441", page: "12",    flag: "",  type: "" },
+    { part: "2017-9443", page: "5",     flag: "",  type: "" },
+    // Screws
+    { part: "9611-1616-07", page: "2",        flag: "", type: "Screw" },
+    { part: "9611-1616-12", page: "10",       flag: "", type: "Screw" },
+    { part: "9611-1620-07", page: "4,6",      flag: "", type: "Screw" },
+    { part: "9611-1625-01", page: "8",        flag: "", type: "Screw" },
+    { part: "9611-1625-07", page: "6",        flag: "", type: "Screw" },
+    { part: "9611-1630-04", page: "14",       flag: "", type: "Screw" },
+    { part: "9611-2030-01", page: "5",        flag: "", type: "Screw" },
+    { part: "9611-2040-04", page: "6",        flag: "", type: "Screw" },
+    { part: "9612-1616-01", page: "9",        flag: "", type: "Screw" },
+    { part: "9612-1616-07", page: "10,25,29", flag: "", type: "Screw" },
+    { part: "9612-1620-07", page: "9,10,16",  flag: "", type: "Screw" },
+    { part: "9612-1625-01", page: "16",       flag: "", type: "Screw" },
+    { part: "9612-1625-02", page: "8,9",      flag: "", type: "Screw" },
+    { part: "9612-1625-07", page: "16",       flag: "", type: "Screw" },
+    { part: "9612-1628-07", page: "4",        flag: "", type: "Screw" },
+    { part: "9612-1630-07", page: "6",        flag: "", type: "Screw" },
+    { part: "9612-1632-12", page: "12",       flag: "", type: "Screw" },
+    { part: "9612-1635-07", page: "6",        flag: "", type: "Screw" },
+    { part: "9612-1650-07", page: "15",       flag: "", type: "Screw" },
+    { part: "9612-1675-01", page: "8",        flag: "", type: "Screw" },
+    { part: "9612-1680-07", page: "4",        flag: "", type: "Screw" },
+    { part: "9612-2080-07", page: "4,14",     flag: "", type: "Screw" },
+    { part: "9613-1418-07", page: "17",       flag: "", type: "Screw" },
+    { part: "9613-1645-01", page: "2",        flag: "", type: "Screw" },
+    { part: "9613-1675-01", page: "8",        flag: "", type: "Screw" },
+    { part: "9613-1416-07", page: "17",       flag: "", type: "Screw" },
+    { part: "9761-1425-07", page: "1",        flag: "", type: "Screw" },
+    { part: "9761-1725-07", page: "12",       flag: "", type: "Screw" },
+    { part: "9761-1730-07", page: "4,5",      flag: "", type: "Screw" },
+    { part: "9761-1740-07", page: "14",       flag: "", type: "Screw" },
+    { part: "9761-2035-07", page: "5",        flag: "", type: "Screw" },
+    { part: "9761-2040-07", page: "13",       flag: "", type: "Screw" },
+    { part: "9761-2050-07", page: "4,5",      flag: "", type: "Screw" },
+    { part: "9761-2060-07", page: "5",        flag: "", type: "Screw" },
+    { part: "9762-1725-07", page: "24",       flag: "", type: "Screw" },
+    { part: "9762-1730-07", page: "24",       flag: "", type: "Screw" },
+    { part: "9762-1735-07", page: "14",       flag: "", type: "Screw" },
+    { part: "9762-1740-07", page: "7",        flag: "", type: "Screw" },
+    { part: "9762-1745-07", page: "1,4",      flag: "", type: "Screw" },
+    { part: "9762-2040-07", page: "12",       flag: "", type: "Screw" },
+    { part: "9762-2045-07", page: "14",       flag: "", type: "Screw" },
+    { part: "9762-2060-07", page: "11",       flag: "", type: "Screw" },
+    { part: "9763-1735-07", page: "4",        flag: "", type: "Screw" },
+    { part: "9763-1755-07", page: "21",       flag: "", type: "Screw" },
+    { part: "9765-1740-07", page: "4,7,25",   flag: "", type: "Screw" },
+    // E-rings
+    { part: "9721-0120-13", page: "9,16,17",  flag: "", type: "E-ring" },
+    { part: "9721-0150-13", page: "13,16,17", flag: "", type: "E-ring" },
+    { part: "9721-0200-13", page: "5",        flag: "", type: "E-ring" },
+    // Steel ball
+    { part: "9758-0150-00", page: "2",        flag: "", type: "Steel ball" },
+    // Index page 7 — electronic components
+    { part: "9791-1830-40", page: "9",        flag: "", type: "Spring" },
+    { part: "9791-2140-40", page: "17",       flag: "", type: "Spring" },
+    { part: "9792-1735-40", page: "5,24",     flag: "", type: "Spring" },
+    { part: "9792-2140-40", page: "8,12",     flag: "", type: "Spring" },
+    { part: "9793-1840-86", page: "4",        flag: "", type: "Spring" },
+    { part: "9794-1640-50", page: "9",        flag: "", type: "Spring" },
+    { part: "9795-3155-87", page: "2",        flag: "", type: "Spring" },
+    // LED
+    { part: "9353-2642-01", page: "8",        flag: "", type: "LED" },
+    // Transistor
+    { part: "9363-1032-01", page: "18,39",    flag: "", type: "Transistor" },
+    { part: "9363-1032-02", page: "18,39",    flag: "", type: "Transistor" },
+    { part: "9363-1032-03", page: "18,39",    flag: "", type: "Transistor" },
+    // Crystal resonator
+    { part: "9373-4161-01", page: "18,39",    flag: "", type: "Crystal resonator" },
+    // Leads wire
+    { part: "9391-0507-00", page: "19,40",    flag: "", type: "Leads wire" },
+    { part: "9391-0507-01", page: "19,40",    flag: "", type: "Leads wire" },
+    { part: "9391-0507-02", page: "19,40",    flag: "", type: "Leads wire" },
+    { part: "9391-0507-03", page: "19,40",    flag: "", type: "Leads wire" },
+    { part: "9391-0507-04", page: "19,40",    flag: "", type: "Leads wire" },
+    { part: "9391-0507-05", page: "19,40",    flag: "", type: "Leads wire" },
+    { part: "9391-0507-06", page: "19,40",    flag: "", type: "Leads wire" },
+    { part: "9391-0507-07", page: "19,40",    flag: "", type: "Leads wire" },
+    { part: "9391-0507-08", page: "19,40",    flag: "", type: "Leads wire" },
+    { part: "9391-0807-00", page: "19,40",    flag: "", type: "Leads wire" },
+    { part: "9391-0807-01", page: "19,40",    flag: "", type: "Leads wire" },
+    { part: "9391-0807-02", page: "19,40",    flag: "", type: "Leads wire" },
+    { part: "9391-0807-03", page: "19,40",    flag: "", type: "Leads wire" },
+    { part: "9391-0807-04", page: "19,40",    flag: "", type: "Leads wire" },
+    { part: "9391-0807-05", page: "19,40",    flag: "", type: "Leads wire" },
+    { part: "9391-0807-06", page: "19,40",    flag: "", type: "Leads wire" },
+    { part: "9391-0807-07", page: "19,40",    flag: "", type: "Leads wire" },
+    { part: "9391-0807-08", page: "19,40",    flag: "", type: "Leads wire" },
+    { part: "9391-0807-09", page: "19,40",    flag: "", type: "Leads wire" },
+    // Fixed resistor
+    { part: "9422-1026-62", page: "18,39",    flag: "", type: "Fixed resistor" },
+    { part: "9422-1046-62", page: "18,39",    flag: "", type: "Fixed resistor" },
+    { part: "9422-1546-62", page: "18,39",    flag: "", type: "Fixed resistor" },
+    { part: "9422-2046-62", page: "18,39",    flag: "", type: "Fixed resistor" },
+    { part: "9422-2736-62", page: "18",       flag: "", type: "Fixed resistor" },
+    { part: "9422-3036-62", page: "18,39",    flag: "", type: "Fixed resistor" },
+    { part: "9422-3336-62", page: "18,39",    flag: "", type: "Fixed resistor" },
+    { part: "9422-3616-62", page: "18,39",    flag: "", type: "Fixed resistor" },
+    { part: "9422-3636-62", page: "18,39",    flag: "", type: "Fixed resistor" },
+    { part: "9422-3916-62", page: "18,39",    flag: "", type: "Fixed resistor" },
+    { part: "9422-3936-62", page: "18,39",    flag: "", type: "Fixed resistor" },
+    { part: "9422-4336-62", page: "18,39",    flag: "", type: "Fixed resistor" },
+    { part: "9422-4736-62", page: "18,39",    flag: "", type: "Fixed resistor" },
+    { part: "9422-5636-62", page: "18,39",    flag: "", type: "Fixed resistor" },
+    { part: "9422-6836-62", page: "18,39",    flag: "", type: "Fixed resistor" },
+    { part: "9422-9106-62", page: "18,39",    flag: "", type: "Fixed resistor" },
+    { part: "9432-1046-62", page: "18",       flag: "", type: "Fixed resistor" },
+    { part: "9432-1226-61", page: "18",       flag: "", type: "Fixed resistor" },
+    { part: "9432-2026-61", page: "18,39",    flag: "", type: "Fixed resistor" },
+    { part: "9432-2046-62", page: "18",       flag: "", type: "Fixed resistor" },
+    { part: "9432-2068-61", page: "18,39",    flag: "", type: "Fixed resistor" },
+    { part: "9432-2426-61", page: "18,39",    flag: "", type: "Fixed resistor" },
+    { part: "9432-2436-62", page: "18",       flag: "", type: "Fixed resistor" },
+    { part: "9432-2726-61", page: "18,39",    flag: "", type: "Fixed resistor" },
+    // Index page 8 — more resistors, variable resistors, condensers
+    { part: "9432-2736-62", page: "18,39",    flag: "", type: "Fixed resistor" },
+    { part: "9432-3026-61", page: "18,39",    flag: "", type: "Fixed resistor" },
+    { part: "9432-3336-62", page: "18",       flag: "", type: "Fixed resistor" },
+    { part: "9432-3357-61", page: "18,39",    flag: "", type: "Fixed resistor" },
+    { part: "9432-3926-61", page: "18,39",    flag: "", type: "Fixed resistor" },
+    { part: "9432-3936-62", page: "18",       flag: "", type: "Fixed resistor" },
+    { part: "9432-5126-61", page: "18,39",    flag: "", type: "Fixed resistor" },
+    { part: "9432-5136-62", page: "16",       flag: "", type: "Fixed resistor" },
+    { part: "9432-5626-61", page: "18,39",    flag: "", type: "Fixed resistor" },
+    { part: "9432-6226-61", page: "18,39",    flag: "", type: "Fixed resistor" },
+    { part: "9432-6826-61", page: "18,39",    flag: "", type: "Fixed resistor" },
+    { part: "9432-6836-61", page: "18",       flag: "", type: "Fixed resistor" },
+    { part: "9432-7526-61", page: "18,39",    flag: "", type: "Fixed resistor" },
+    { part: "9534-6845-61", page: "18,39",    flag: "", type: "Fixed resistor" },
+    { part: "9535-1555-36", page: "18,39",    flag: "", type: "Fixed resistor" },
+    { part: "9535-4745-36", page: "18",       flag: "", type: "Fixed resistor" },
+    { part: "9535-6845-36", page: "39",       flag: "", type: "Fixed resistor" },
+    { part: "9564-1025-61", page: "18,39",    flag: "", type: "Fixed resistor" },
+    { part: "9564-1514-62", page: "18",       flag: "", type: "Fixed resistor" },
+    { part: "9564-3005-62", page: "18,39",    flag: "", type: "Fixed resistor" },
+    { part: "9564-3324-61", page: "18,39",    flag: "", type: "Fixed resistor" },
+    { part: "9565-0200-61", page: "18,39",    flag: "", type: "Fixed resistor" },
+    { part: "9565-1234-61", page: "18,39",    flag: "", type: "Fixed resistor" },
+    { part: "9565-4738-64", page: "18,39",    flag: "", type: "Fixed resistor" },
+    // Variable resistor
+    { part: "9472-2039-65", page: "39",       flag: "☆", type: "Variable resistor" },
+    { part: "9472-2239-63", page: "18,39",    flag: "", type: "Variable resistor" },
+    { part: "9472-3329-63", page: "18,39",    flag: "", type: "Variable resistor" },
+    // Condenser
+    { part: "9531-1075-63", page: "18,39",    flag: "", type: "Condenser" },
+    { part: "9531-1575-61", page: "18,39",    flag: "", type: "Condenser" },
+    { part: "9533-3355-63", page: "18,39",    flag: "", type: "Condenser" },
+  ];
+
+  let sortKey = 'part';
+  let sortDir = 1;
+
+  function renderParts(data) {
+    const tbody = document.getElementById('parts-tbody');
+    tbody.innerHTML = data.map(p => `
+      <tr>
+        <td>${p.part}</td>
+        <td>${p.page}</td>
+        <td style="color:var(--text-muted); font-size:12px;">${p.type || ''}</td>
+        <td style="color:var(--accent); font-size:15px;">${p.flag}</td>
+      </tr>
+    `).join('');
+  }
+
+  function filterParts(val) {
+    const v = val.toLowerCase();
+    const filtered = partsData.filter(p =>
+      p.part.toLowerCase().includes(v) ||
+      p.page.includes(v) ||
+      (p.type || '').toLowerCase().includes(v)
+    );
+    renderParts(filtered);
+  }
+
+  function sortParts(key) {
+    if (sortKey === key) sortDir *= -1;
+    else { sortKey = key; sortDir = 1; }
+    const sorted = [...partsData].sort((a, b) =>
+      a[key].localeCompare(b[key], undefined, {numeric: true}) * sortDir
+    );
+    renderParts(sorted);
+  }
+
+  // Initial render
+  renderParts(partsData);
+
+  // Active nav on scroll
+  const sections = document.querySelectorAll('.section[id]');
+  const navLinks = document.querySelectorAll('.nav-link:not(.disabled)');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(l => l.classList.remove('active'));
+        const active = document.querySelector(`.nav-link[href="#${entry.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-30% 0px -60% 0px' });
+
+  sections.forEach(s => observer.observe(s));
+
+  // Basic search highlight
+  function handleSearch(val) {
+    const main = document.getElementById('main-content');
+    if (!val) {
+      main.querySelectorAll('mark').forEach(m => {
+        m.replaceWith(document.createTextNode(m.textContent));
+      });
+      return;
+    }
+    // Simple scroll to first matching section
+    const rows = document.querySelectorAll('.spec-table td:last-child, .step-body, .step-title');
+    rows.forEach(el => {
+      if (el.textContent.toLowerCase().includes(val.toLowerCase())) {
+        el.closest('.section')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        return;
+      }
+    });
+  }
+</script>
+
+</body>
+</html>
